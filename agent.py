@@ -1,12 +1,13 @@
 import os
 from openai import OpenAI
+from google.colab import userdata
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# Get API key from Google Colab Secret
+api_key = userdata.get("OPENAI_API_KEY")
+client = OpenAI(api_key=api_key)
 
 SYSTEM_PROMPT = """
-You are Cyber-Friendly AI Agent.
-
-You have two main modes:
+You are a Cyber-Friendly AI Agent.
 
 1. Friendly mode:
 - Talk casually and kindly.
@@ -59,3 +60,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+ 
